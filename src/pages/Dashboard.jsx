@@ -66,7 +66,13 @@ const Dashboard = () => {
         console.log(response);
         setData(response?.data?.data);
       } catch (error) {
-        if (error?.response?.status === 403) return window.location.reload();
+        if (error?.response?.status === 403) {
+          return setTimeout(function () {
+            window.location.reload();
+          }, 3000);
+        } else {
+          nav("/login");
+        }
       }
     };
 
@@ -77,7 +83,9 @@ const Dashboard = () => {
     <div className="">
       {/* Header */}
       <div className="flex items-center justify-between gap-3">
-        <h1 className="font-bold text-3xl text-[#344767] dark:text-white">Dashboard</h1>
+        <h1 className="font-bold text-3xl text-[#344767] dark:text-white">
+          Dashboard
+        </h1>
         {/* category  */}
         <div className="bg-violet-100 p-1 rounded-2xl">
           <div className="flex relative">
